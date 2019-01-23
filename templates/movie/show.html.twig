@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} | {{ movie.title }}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('movie') }}
+{% endblock %}
+
+{% block body %}
+    <div class="poster">
+        <img class="" src="{{ movie.poster }}" alt="Poster of {{ movie.title }}"/>
+    </div>
+    <div class="note">
+        {% for i in 0..10 %}
+            <i class="fas fa-star"></i>
+        {% endfor %}
+        <a href="#" class="btn btn-sm">Rate</a>
+    </div>
+    <div class="title">
+        <h1>{{ movie.title }}</h1>
+    </div>
+    <div class="subtitle">
+        {{ movie.date|date('Y') }} - {{ movie.director.name }}
+    </div>
+
+    <div class="description">
+        <p>
+            {{ movie.description }}
+        </p>
+    </div>
+
+    <nav class="menu">
+        <ul>
+            <li><a data-target="cast">Cast</a></li>
+            <li><a data-target="images">Images</a></li>
+            <li><a data-target="news">News</a></li>
+            <li>Crew</li>
+            <li>Box office</li>
+            <li>Comments</li>
+        </ul>
+    </nav>
+    <div class="infos">
+        <ul class="data cast">
+            {% for person in movie.casts|slice(0,8) %}
+                {% include 'person/card.html.twig' %}
+            {% endfor %}
+        </ul>
+        <ul class="data images">
+            {% for image in movie.images|slice(0,8) %}
+                <li>
+                    <img src="{{ image }}" alt="Image of movie {{ movie.title }}"/>
+                    <a href="#pic_modal{{ loop.index }}"><p>Click to enlarge</p></a>
+                    <div id="pic_modal{{ loop.index }}" class="modal">
+                        <a class="close" href="#close"><i class="fas fa-2x fa-times"></i></a>
+                        <img class="big_image" src="{{ image }}" alt="Image of movie {{ movie.title }}"/>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <ul class="data news">
+            <li>News</li>
+            <li>News</li>
+            <li>News</li>
+        </ul>
+    </div>
+
+{% endblock %}

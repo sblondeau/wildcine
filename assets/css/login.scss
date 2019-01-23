@@ -1,0 +1,11 @@
+@import 'variables.scss';
+
+.container {
+  display: grid;
+  grid-template-columns:auto;
+  grid-template-rows: 80px auto 80px;
+  grid-template-areas: "header" "login" "footer";
+  padding-right: $padding;
+  padding-left: $padding;
+}
+

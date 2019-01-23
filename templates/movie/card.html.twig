@@ -1,0 +1,7 @@
+{% if movie %}
+<li>
+    <img src="{{ movie.poster }}" alt="{{ movie.title }}"/>
+
+    <a href="{{ path('movie_show', {'id': movie.id}) }}"><p>{{ movie.title }}</p></a>
+</li>
+{% endif %}

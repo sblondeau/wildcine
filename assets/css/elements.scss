@@ -1,0 +1,143 @@
+@import 'variables.scss';
+
+.btn {
+  color: $lightColor;
+  background: transparent;
+  border: 1px solid $lightColor;
+  border-radius: 4px;
+  padding: 0.5em;
+  text-decoration: none;
+  cursor:pointer;
+  &:hover {
+    border-color: fade_out($lightColor, 0.3);
+    background-color: fade_out($lightColor, 0.8);
+    color: fade_out($lightColor, 0.3);
+  }
+}
+
+.btn-sm {
+  font-size: 0.7em;
+}
+
+body {
+  background-color: $bodyColor;
+  background-image: url('../images/background.png');
+  color: $lightColor;
+  font-size: $defaultSize;
+  font-family: $mainFont;
+}
+
+h1, h2 {
+  font-family: $titleFont;
+}
+
+h1 {
+  font-size: $titleSize*2;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  &:hover {
+    color: fade_out($lightColor, 0.3);
+  }
+}
+
+header {
+  position:fixed;
+  z-index: 10;
+  top:0;
+  left:0;
+  background-color:$bodyColor;
+  width: 100vw;
+  font-family: $titleFont;
+  font-size: $titleSize;
+  padding: $padding;
+  nav {
+    ul {
+      justify-content: center;
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+      li {
+        padding-right: 2em;
+      }
+    }
+  }
+}
+
+.modal {
+  display:none;
+  position: fixed;
+  overflow: auto;
+
+  top: 80px;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 80px);
+  background-color: transparentize($bodyColor, 0.1);
+  padding: $padding;
+  z-index: 5;
+
+  .close {
+    position:fixed;
+    top:120px;
+    right:80px;
+    z-index:6;
+  }
+
+  form {
+    margin-top:$padding*2;
+    display: flex;
+    justify-content: center;
+    label {
+      font-size: $titleSize*2;
+      margin-right:$padding;
+    }
+    input[type="search"] {
+      font-size:$titleSize*2;
+      color:white;
+      border:none;
+      border-bottom:1px solid transparentize($lightColor, 0.5);
+      background-color: transparent;
+    }
+  }
+  ul.data {
+    display:flex;
+    margin:1em;
+    li {
+      flex: 0 0 15%;
+      border:1px solid transparentize($lightColor, 0.8);
+    }
+  }
+
+  &:target {
+    display:block;
+  }
+}
+
+.modal img.big_image {
+  object-fit: contain;
+  &:hover {
+    filter:none;
+    transform:none;
+  }
+}
+
+
+.modal .login {
+  text-align: center;
+  display:block;
+
+  input[type="email"], input[type="password"] {
+      font-size:$titleSize;
+      color:white;
+      padding:$padding/2;
+      border:1px solid transparentize($lightColor, 0.5);
+      background-color: transparent;
+  }
+  button {
+    font-size: $titleSize;
+  }
+}

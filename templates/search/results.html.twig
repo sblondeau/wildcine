@@ -1,0 +1,16 @@
+<div class="results">
+
+    <h2>Movies ({{ movies|length }})</h2>
+    <ul class="data">
+        {% for movie in movies %}
+            {% include 'movie/card.html.twig' %}
+        {% endfor %}
+    </ul>
+
+    <h2>Persons ({{ persons|length }})</h2>
+    <ul class="data">
+        {% for person in persons %}
+            {% include 'person/card.html.twig' %}
+        {% endfor %}
+    </ul>
+</div>

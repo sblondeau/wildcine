@@ -1,0 +1,16 @@
+<nav>
+    <ul>
+        <li>WildCine</li>
+        <li>Movies</li>
+        <li>Actors</li>
+        <li>News</li>
+        <li><a href="#search_modal"><i class="fa fa-search"></i> Search</a></li>
+        <li>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a href="{{ path('app_logout') }}"><i class="fa fa-close"></i> Logout</a>
+            {% else %}
+            <a href="#login_modal"><i class="fa fa-user"></i> Login</a>
+            {% endif %}
+        </li>
+    </ul>
+</nav>

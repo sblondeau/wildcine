@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <title>{% block title %}WildCine{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('elements') }}
+    {% endblock %}
+
+</head>
+<body>
+<main class="container">
+    <header>
+        {% block header %}
+            {% include 'navbar.html.twig' %}
+        {% endblock %}
+    </header>
+
+    {% block search %}
+        <aside>
+            {% include 'search_modal.html.twig' %}
+        </aside>
+    {% endblock %}
+    {% block login %}
+        <aside>
+            {% include 'security/connection.html.twig' %}
+        </aside>
+    {% endblock %}
+
+    {% block body %}
+
+    {% endblock %}
+    <footer>
+        {% block footer %}
+            {% include 'footer.html.twig' %}
+        {% endblock %}
+    </footer>
+
+</main>
+{% block javascripts %}
+    <script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"
+            integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1"
+            crossorigin="anonymous"></script>
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+</body>
+</html>

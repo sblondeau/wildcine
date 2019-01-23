@@ -1,0 +1,162 @@
+@import "variables.scss";
+
+.container {
+  display: grid;
+  grid-template-columns: 6fr 1fr 0.5fr 8fr;
+  grid-template-rows: 80px auto auto auto auto auto auto auto;
+  grid-template-areas: ". . . ." "poster poster note note" "poster poster title title" "poster poster . subtitle" "poster poster description description" "poster poster menu infos" "poster poster . infos" "footer footer footer footer";
+  padding-right: $padding;
+  padding-left: $padding;
+}
+
+.poster {
+  grid-area: poster;
+  perspective: 1000px;
+  z-index: 0;
+  img {
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+    transform: rotateY(10deg);
+  }
+}
+
+.note {
+  grid-area: note;
+  padding-top: $padding;
+  padding-left: $padding;
+  font-size: $titleSize;
+}
+
+.description {
+  grid-area: description;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.subtitle {
+  grid-area: subtitle;
+  place-self: end;
+  font-size: $defaultSize*1.5;
+  align-self: start;
+  font-family: $titleFont;
+}
+
+.title {
+  grid-column: 2 / span 3;
+  grid-row: 3 / span 1;
+  padding-left: 1.5em;
+  //background-color: transparentize($bodyColor, 0.2);
+  background: radial-gradient(farthest-side ellipse at top left, transparentize($bodyColor, 0.2), transparentize($bodyColor, 0.7));
+
+  align-self: center;
+  padding: $padding;
+  z-index: 1;
+  h1 {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.infos {
+  grid-area: infos;
+}
+
+ul.data {
+  min-height: 620px;
+  display: none;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  padding: 0;
+  list-style: none;
+  li {
+    min-height: 300px;
+    margin: 0.5%;
+    //border: 1px solid $lightColor;
+    flex: 0 0 22%;
+    position: relative;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      position: absolute;
+      z-index: 1;
+      top: 0;
+    }
+    &:hover {
+      img {
+        transform: scale(0.95);
+        filter: blur(5px);
+      }
+
+      p {
+        display: flex;
+        font-family: $titleFont;
+      }
+    }
+    a {
+      color: $lightColor;
+      text-decoration: none;
+    }
+    p {
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      display: none;
+      height: 100%;
+      width: 100%;
+      background-color: transparentize($bodyColor, 0.5);
+      position: absolute;
+      z-index: 2;
+      font-size: $titleSize;
+    }
+  }
+
+  &:first-child {
+    display: flex;
+  }
+
+}
+
+.menu {
+  //background-color: transparentize($bodyColor, 0.3);
+  background: radial-gradient(farthest-side ellipse at top left, transparentize($bodyColor, 0.2), transparentize($bodyColor, 0.7));
+
+  grid-column: 2 / span 2;
+  grid-row: 6 / span 1;
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      padding: 0.3em;
+      padding-left: $padding;
+      padding-right: $padding*0.5;
+      &:hover {
+        background: linear-gradient(to right, transparentize($lightColor, 0.6), transparentize($lightColor, 0.9));
+      }
+      a {
+
+        cursor:pointer;
+      }
+    }
+  }
+  font-size: 1.5em;
+  font-family: $titleFont;
+  z-index: 1;
+
+}
+
+footer {
+  grid-area: footer;
+  padding: 1em;
+  nav {
+    display: flex;
+    justify-content: center;
+  }
+  a {
+    color: white;
+  }
+}
+
